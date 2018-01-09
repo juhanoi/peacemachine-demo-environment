@@ -6,14 +6,16 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
-    "body-parser": "~1.15.2",
+    "body-parser": "^1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "jade": "~1.11.0",
+    "jquery": "^3.2.1",
     "morgan": "~1.7.0",
     "nodemon": "^1.14.9",
     "serve-favicon": "~2.3.0",
-    "watson-developer-cloud": "^3.0.3"
+    "watson-developer-cloud": "^3.0.3",
+    "webpack": "^3.10.0"
   },
   "devDependencies": {
     "express": "^4.14.1"
