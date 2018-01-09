@@ -1,8 +1,8 @@
 {
-  toneanalyzer: {
-    url: '{url}',
-    username: '{username}',
-    password: '{password}',
-    version: '{version}'
+  "toneanalyzer": {
+    "url": "{url}",
+    "username": "{username}",
+    "password": "{password}",
+    "version": "{version}"
   }
 }
