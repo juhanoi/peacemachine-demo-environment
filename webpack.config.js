@@ -1,9 +1,13 @@
 var webpack = require('webpack');
 
+var sourceDir = __dirname + "/public/javascripts";
+
 module.exports = {
-    entry: {
-        app: __dirname + "/public/javascripts/main.js",
-    },
+    entry: [
+        sourceDir + "/main.js",
+        sourceDir + "/analyze.js",
+        sourceDir + "/visualization.js"
+    ],
     output: {
         path: __dirname + "/public/javascripts/",
         filename: "main.bundle.js"
@@ -11,7 +15,8 @@ module.exports = {
     plugins: [
       new webpack.ProvidePlugin({
         $: "jquery",
-        jQuery: "jquery"
+        jQuery: "jquery",
+        d3: "d3"
       })
     ]
 };
