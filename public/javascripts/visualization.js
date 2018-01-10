@@ -125,6 +125,20 @@
     return data;
   }
 
+  function applyForce(wave, f) {
+    var target = Math.floor( N * Math.random() );
+    return wave.map(function (d, i) {
+      if (i === target) {
+        return {
+          x: d.x,
+          y: d.y - f*10,
+          v: d.v
+        };
+      }
+      return d;
+    });
+  }
+
   var waves = [
     initializeWave("Red"),
     initializeWave("Blue"),
