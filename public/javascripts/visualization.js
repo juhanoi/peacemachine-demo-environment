@@ -42,6 +42,23 @@
       .attr("offset", "100%")
       .attr("stop-color", "#00A").attr("stop-opacity", 0);
 
+  var gradientGreen = defs.append("linearGradient")
+      .attr("id", "gradientGreen")
+      .attr("x1", "0%").attr("x2", "100%")
+      .attr("y1", "0%").attr("y2", "0%");
+    gradientGreen.append("stop")
+      .attr("offset", "0%")
+      .attr("stop-color", "#0A0").attr("stop-opacity", 0);
+    gradientGreen.append("stop")
+      .attr("offset", "20%")
+      .attr("stop-color", "#0A0").attr("stop-opacity", 0.9);
+    gradientGreen.append("stop")
+      .attr("offset", "80%")
+      .attr("stop-color", "#0A0").attr("stop-opacity", 0.9);
+    gradientGreen.append("stop")
+      .attr("offset", "100%")
+      .attr("stop-color", "#0A0").attr("stop-opacity", 0);
+
   // Create the center circle
   var circle = svg.append("circle")
       .style("fill", "#000")
@@ -53,33 +70,70 @@
   var sineRed = svg.append("path")
       .style("fill", "transparent")
       .attr("stroke", "url(#gradientRed)")
-      .attr("stroke-width", "0.2")
+      .attr("stroke-width", "0.3")
       .attr("d", "M -15 0 C -5 -10 5 10 15 0");
 
   var sineBlue = svg.append("path")
       .style("fill", "transparent")
       .attr("stroke", "url(#gradientBlue)")
-      .attr("stroke-width", "0.2")
+      .attr("stroke-width", "0.3")
       .attr("d", "M -15 0 C -5 10 5 -10 15 0");
+
+  var sineGreen = svg.append("path")
+      .style("fill", "transparent")
+      .attr("stroke", "url(#gradientGreen)")
+      .attr("stroke-width", "0.3")
+      .attr("d", "M -15 0 C -5 5 5 -5 15 0");
 
 
   (function repeatSines() {
     sineBlue
       .transition().duration(1200)
       .attr("d", "M -15 0 C -5 -10 5 10 15 0")
+      .attr("stroke-width", "0.1")
       .transition().duration(800)
-      .attr("d", "M -15 0 C -5 10 5 -10 15 0");
+      .attr("d", "M -15 0 C -5 10 5 -5 15 0")
+      .attr("stroke-width", "0.3")
+      .transition().duration(1200)
+      .attr("d", "M -15 0 C -5 -13 5 10 15 0")
+      .attr("stroke-width", "0.1")
+      .transition().duration(800)
+      .attr("d", "M -15 0 C -5 10 5 -10 15 0")
+      .attr("stroke-width", "0.3");
+
+    sineGreen
+      .transition().duration(800)
+      .attr("d", "M -15 0 C -5 -10 5 15 15 0")
+      .attr("stroke-width", "0.2")
+      .transition().duration(900)
+      .attr("d", "M -15 0 C -5 10 5 -10 15 0")
+      .attr("stroke-width", "0.3")
+      .transition().duration(1100)
+      .attr("d", "M -15 0 C -5 -5 15 10 15 0")
+      .attr("stroke-width", "0.1")
+      .transition().duration(1200)
+      .attr("d", "M -15 0 C -5 5 5 -5 15 0")
+      .attr("stroke-width", "0.3");
+
 
     sineRed
       .transition().duration(800)
       .attr("d", "M -15 0 C -5 10 5 -10 15 0")
+      .attr("stroke-width", "0.2")
+      .transition().duration(900)
+      .attr("d", "M -15 0 C -5 -10 5 12 15 0")
+      .attr("stroke-width", "0.1")
+      .transition().duration(1100)
+      .attr("d", "M -15 0 C -5 10 5 -10 15 0")
+      .attr("stroke-width", "0.2")
       .transition().duration(1200)
-      .attr("d", "M -15 0 C -5 -10 5 10 15 0")
+      .attr("d", "M -15 0 C -5 -5 5 10 15 0")
+      .attr("stroke-width", "0.3")
       .on("end", repeatSines);
   })();
 
   // Text
-  var words = [{ text:"amet",color:"#000"}, { text:"consectetur",color:"#000"}, { text:"adipiscing",color:"#00A"}, { text:"elit",color:"#000"}, { text:"In",color:"#00A"}, { text:"pellentesque",color:"#000"}, { text:"enim",color:"#000"}, { text:"at",color:"#A00"}, { text:"enim",color:"#000"}, { text:"auctor",color:"#000"}, { text:"mollis",color:"#A00"}, { text:"Vestibulum",color:"#000"}, { text:"ante",color:"#000"}, { text:"ipsum",color:"#000"}, { text:"primis",color:"#000"}, { text:"in",color:"#00A"}, { text:"faucibus",color:"#000"}, { text:"orci",color:"#000"}, { text:"luctus",color:"#000"}, { text:"ultrices",color:"#A00"}, { text:"posuere",color:"#A00"}, { text:"cubilia",color:"#A00"}, { text:"Curae",color:"#00A"}, { text:"Morbi",color:"#000"}, { text:"ultricies",color:"#000"}, { text:"orci",color:"#000"}, { text:"ipsum",color:"#A00"}, { text:"maximus",color:"#000"}, { text:"accumsan",color:"#000"}, { text:"Lorem",color:"#000"}, { text:"ipsum",color:"#000"}, { text:"dolor",color:"#000"}, { text:"sit",color:"#00A"}, { text:"amet",color:"#000"}, { text:"consectetur",color:"#000"}, { text:"adipiscing",color:"#000"}, { text:"elit",color:"#000"}, { text:"In",color:"#00A"}, { text:"pellentesque",color:"#000"}, { text:"enim",color:"#000"}, { text:"at",color:"#000"}, { text:"enim",color:"#000"}, { text:"auctor",color:"#000"}, { text:"mollis",color:"#000"}, { text:"Vestibulum",color:"#000"}, { text:"ante",color:"#000"}, { text:"ipsum",color:"#000"}, { text:"primis",color:"#A00"}, { text:"in",color:"#000"}, { text:"faucibus",color:"#00A"}, { text:"orci",color:"#00A"}, { text:"luctus",color:"#00A"}, { text:"ultrices",color:"#000"}, { text:"posuere",color:"#000"}, { text:"cubilia",color:"#A00"}, { text:"Curae",color:"#A00"}, { text:"Morbi",color:"#000"}, { text:"ultricies",color:"#000"}, { text:"orci",color:"#000"}, { text:"ipsum",color:"#000"}, { text:"maximus",color:"#00A"}, { text:"accumsan",color:"#000"}];
+  var words = [{ text:"amet",color:"#000"}, { text:"consectetur",color:"#0A0"}, { text:"adipiscing",color:"#00A"}, { text:"elit",color:"#000"}, { text:"In",color:"#00A"}, { text:"pellentesque",color:"#000"}, { text:"enim",color:"#0A0"}, { text:"at",color:"#A00"}, { text:"enim",color:"#000"}, { text:"auctor",color:"#000"}, { text:"mollis",color:"#A00"}, { text:"Vestibulum",color:"#000"}, { text:"ante",color:"#0A0"}, { text:"ipsum",color:"#0A0"}, { text:"primis",color:"#000"}, { text:"in",color:"#00A"}, { text:"faucibus",color:"#000"}, { text:"orci",color:"#000"}, { text:"luctus",color:"#0A0"}, { text:"ultrices",color:"#A00"}, { text:"posuere",color:"#A00"}, { text:"cubilia",color:"#A00"}, { text:"Curae",color:"#00A"}, { text:"Morbi",color:"#000"}, { text:"ultricies",color:"#000"}, { text:"orci",color:"#000"}, { text:"ipsum",color:"#A00"}, { text:"maximus",color:"#000"}, { text:"accumsan",color:"#000"}, { text:"Lorem",color:"#000"}, { text:"ipsum",color:"#000"}, { text:"dolor",color:"#000"}, { text:"sit",color:"#00A"}, { text:"amet",color:"#000"}, { text:"consectetur",color:"#000"}, { text:"adipiscing",color:"#000"}, { text:"elit",color:"#000"}, { text:"In",color:"#00A"}, { text:"pellentesque",color:"#000"}, { text:"enim",color:"#000"}, { text:"at",color:"#000"}, { text:"enim",color:"#000"}, { text:"auctor",color:"#000"}, { text:"mollis",color:"#000"}, { text:"Vestibulum",color:"#000"}, { text:"ante",color:"#000"}, { text:"ipsum",color:"#000"}, { text:"primis",color:"#A00"}, { text:"in",color:"#000"}, { text:"faucibus",color:"#00A"}, { text:"orci",color:"#00A"}, { text:"luctus",color:"#00A"}, { text:"ultrices",color:"#000"}, { text:"posuere",color:"#000"}, { text:"cubilia",color:"#A00"}, { text:"Curae",color:"#A00"}, { text:"Morbi",color:"#000"}, { text:"ultricies",color:"#000"}, { text:"orci",color:"#000"}, { text:"ipsum",color:"#000"}, { text:"maximus",color:"#00A"}, { text:"accumsan",color:"#000"}];
 
   function wordPosition(i) {
     var alpha = 5.8 * i;  // deg
