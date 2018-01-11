@@ -8,77 +8,35 @@
   var defs = svg.append("defs");
 
   // Gradient colors
-  var gradientRed = defs.append("linearGradient")
-      .attr("id", "gradientRed")
-      .attr("x1", "0%").attr("x2", "100%")
-      .attr("y1", "0%").attr("y2", "0%");
-    gradientRed.append("stop")
-      .attr("offset", "0%")
-      .attr("stop-color", "#A00").attr("stop-opacity", 0);
-    gradientRed.append("stop")
-      .attr("offset", "20%")
-      .attr("stop-color", "#A00").attr("stop-opacity", 0.9);
-    gradientRed.append("stop")
-      .attr("offset", "80%")
-      .attr("stop-color", "#A00").attr("stop-opacity", 0.9);
-    gradientRed.append("stop")
-      .attr("offset", "100%")
-      .attr("stop-color", "#A00").attr("stop-opacity", 0);
+  function initializeGradient(id, color) {
+      var gradient = defs.append("linearGradient")
+          .attr("id", "gradient"+id)
+          .attr("x1", "0%").attr("x2", "100%")
+          .attr("y1", "0%").attr("y2", "0%");
+        gradient.append("stop")
+          .attr("offset", "0%")
+          .attr("stop-color", color).attr("stop-opacity", 0);
+        gradient.append("stop")
+          .attr("offset", "20%")
+          .attr("stop-color", color).attr("stop-opacity", 0.9);
+        gradient.append("stop")
+          .attr("offset", "80%")
+          .attr("stop-color", color).attr("stop-opacity", 0.9);
+        gradient.append("stop")
+          .attr("offset", "100%")
+          .attr("stop-color", color).attr("stop-opacity", 0);
 
-  var gradientBlue = defs.append("linearGradient")
-      .attr("id", "gradientBlue")
-      .attr("x1", "0%").attr("x2", "100%")
-      .attr("y1", "0%").attr("y2", "0%");
-    gradientBlue.append("stop")
-      .attr("offset", "0%")
-      .attr("stop-color", "#00A").attr("stop-opacity", 0);
-    gradientBlue.append("stop")
-      .attr("offset", "20%")
-      .attr("stop-color", "#00A").attr("stop-opacity", 0.9);
-    gradientBlue.append("stop")
-      .attr("offset", "80%")
-      .attr("stop-color", "#00A").attr("stop-opacity", 0.9);
-    gradientBlue.append("stop")
-      .attr("offset", "100%")
-      .attr("stop-color", "#00A").attr("stop-opacity", 0);
+      return gradient;
+  }
 
-  var gradientGreen = defs.append("linearGradient")
-      .attr("id", "gradientGreen")
-      .attr("x1", "0%").attr("x2", "100%")
-      .attr("y1", "0%").attr("y2", "0%");
-    gradientGreen.append("stop")
-      .attr("offset", "0%")
-      .attr("stop-color", "#0A0").attr("stop-opacity", 0);
-    gradientGreen.append("stop")
-      .attr("offset", "20%")
-      .attr("stop-color", "#0A0").attr("stop-opacity", 0.9);
-    gradientGreen.append("stop")
-      .attr("offset", "80%")
-      .attr("stop-color", "#0A0").attr("stop-opacity", 0.9);
-    gradientGreen.append("stop")
-      .attr("offset", "100%")
-      .attr("stop-color", "#0A0").attr("stop-opacity", 0);
-
-  var gradientPurple = defs.append("linearGradient")
-      .attr("id", "gradientPurple")
-      .attr("x1", "0%").attr("x2", "100%")
-      .attr("y1", "0%").attr("y2", "0%");
-    gradientPurple.append("stop")
-      .attr("offset", "0%")
-      .attr("stop-color", "#70A").attr("stop-opacity", 0);
-    gradientPurple.append("stop")
-      .attr("offset", "20%")
-      .attr("stop-color", "#70A").attr("stop-opacity", 0.9);
-    gradientPurple.append("stop")
-      .attr("offset", "80%")
-      .attr("stop-color", "#70A").attr("stop-opacity", 0.9);
-    gradientPurple.append("stop")
-      .attr("offset", "100%")
-      .attr("stop-color", "#70A").attr("stop-opacity", 0);
+  var gradientRed = initializeGradient("Red", "#A00");
+  var gradientBlue = initializeGradient("Blue", "#00A");
+  var gradientGreen = initializeGradient("Green", "#0A0");
+  var gradientPurple = initializeGradient("Purple", "#70A");
 
   // Create the center circle
   var circle = svg.append("circle")
-      .style("fill", "#000")
+      .style("fill", "#222")
       .attr("cx", 0)
       .attr("cy", 0)
       .attr("r", 15);
@@ -244,6 +202,67 @@
     {text:"Phasellus laoreet nulla eu nulla vehicula, vel aliquet arcu fringilla. ",anger:0,fear:0,joy:0,sadness:0},
     {text:"In vel lectus sit amet metus pretium lobortis et nec ligula. ",anger:0,fear:0,joy:0.34,sadness:0.67},
     {text:"Quisque consectetur lacus rutrum, sagittis urna sit amet, pretium nibh. ",anger:0,fear:0.23,joy:0,sadness:0},
+    {text:"Etiam vestibulum dolor at nulla ullamcorper ornare quis ut enim.",anger:0,fear:0,joy:0,sadness:0.56},
+    {text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Donec ullamcorper lacus quis auctor sodales. ",anger:0,fear:0.6,joy:0,sadness:0},
+    {text:"In id metus in urna tristique sagittis quis et lacus. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Ut quis nisi non orci pretium bibendum. ",anger:0,fear:0,joy:0,sadness:0.75},
+    {text:"Suspendisse pharetra lorem eu augue dapibus molestie. ",anger:0.2,fear:0.4,joy:0,sadness:0},
+    {text:"Etiam at leo suscipit, semper arcu eget, tempor diam. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Sed non augue eu nisi sodales ornare. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Curabitur non orci ut sem facilisis semper. ",anger:0,fear:0,joy:0.1,sadness:0},
+    {text:"Donec ultrices lectus in turpis sollicitudin sollicitudin. ",anger:0.75,fear:0,joy:0,sadness:0.3},
+    {text:"Cras non justo id enim pulvinar egestas vel sit amet lectus. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Sed vulputate sem eget justo efficitur placerat. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Curabitur a mi iaculis, consectetur elit id, dignissim turpis. ",anger:0,fear:0,joy:0,sadness:0.3},
+    {text:"Integer ut sapien ut leo scelerisque blandit. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Phasellus quis diam tristique lectus consequat dignissim. ",anger:0.2,fear:0,joy:0,sadness:0},
+    {text:"Ut non dolor imperdiet eros dictum iaculis id sed diam. ",anger:0,fear:0,joy:0.9,sadness:0},
+    {text:"Sed vel orci sed mauris bibendum feugiat. ",anger:0,fear:0,joy:0.2,sadness:0},
+    {text:"Donec semper turpis eget lacus hendrerit, aliquet ullamcorper nisi ultricies. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Etiam et diam ac neque fringilla euismod. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Sed eleifend ligula vel ante tempus lobortis. ",anger:0.25,fear:0,joy:0.5,sadness:0},
+    {text:"Fusce sed magna fermentum, blandit augue at, pretium massa. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",anger:0,fear:0.3,joy:0,sadness:0},
+    {text:"Etiam et lectus ac tortor venenatis molestie sit amet nec leo. ",anger:0,fear:0,joy:0.5,sadness:0},
+    {text:"Mauris rhoncus tellus at enim ultrices commodo. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Proin pellentesque orci cursus, aliquam nibh eget, commodo ex. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Aenean eleifend odio suscipit enim faucibus, vel feugiat dolor posuere. ",anger:0,fear:0,joy:0,sadness:0.45},
+    {text:"Aliquam dignissim tellus a lectus fringilla tristique. ",anger:0,fear:0.12,joy:0,sadness:0},
+    {text:"Ut sed velit non erat posuere laoreet ut in arcu. ",anger:0,fear:0,joy:0.67,sadness:0},
+    {text:"Duis et purus vehicula quam fermentum commodo. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Sed sit amet purus ac nunc condimentum eleifend ut vitae est. ",anger:0,fear:0.9,joy:0,sadness:0.2},
+    {text:"Nunc egestas quam sollicitudin turpis varius iaculis. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Nullam tempus augue quis feugiat tempor. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Morbi molestie leo vitae eleifend malesuada. ",anger:0,fear:0.1,joy:0,sadness:0},
+    {text:"Cras imperdiet augue at dignissim maximus. ",anger:0.1,fear:0,joy:0,sadness:0},
+    {text:"Proin tincidunt ante vel posuere tincidunt. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Nunc hendrerit ligula sed eros lobortis varius. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"In tempus mauris id mauris interdum dictum. ",anger:0,fear:0,joy:0.24,sadness:0.56},
+    {text:"Fusce sollicitudin nisi a lobortis gravida. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Quisque eu nisi quis est tincidunt iaculis in eu tortor. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",anger:0,fear:0,joy:0.21,sadness:0},
+    {text:"Vestibulum id sem hendrerit, posuere sapien quis, dapibus nulla. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Integer ut nulla in metus vulputate cursus. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Vivamus vel erat nec urna faucibus tincidunt. ",anger:0,fear:0,joy:0.12,sadness:0},
+    {text:"Proin vulputate risus sed ultricies accumsan. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Praesent eget nibh quis erat hendrerit condimentum eu vestibulum ex. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Aliquam laoreet turpis in diam congue tincidunt. ",anger:0,fear:0,joy:0.12,sadness:0},
+    {text:"Aenean egestas dolor at felis euismod, placerat suscipit ipsum lacinia. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Etiam sit amet elit hendrerit metus finibus egestas. ",anger:0,fear:0,joy:0.2,sadness:0},
+    {text:"Vestibulum a odio congue, placerat tellus quis, ultrices enim. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Curabitur vulputate enim a lorem viverra ullamcorper. ",anger:0.23,fear:0,joy:0,sadness:0.532},
+    {text:"Nullam tempus dui vitae vestibulum aliquam. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Duis faucibus diam sed nunc tincidunt, non dignissim felis tempor. ",anger:0,fear:0.234,joy:0,sadness:0},
+    {text:"Vivamus ornare libero venenatis bibendum malesuada. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Nulla at diam eu mauris posuere dapibus. ",anger:0,fear:0,joy:0,sadness:0.234},
+    {text:"Aliquam varius nisl at cursus commodo. ",anger:0,fear:0.856,joy:0,sadness:0.54},
+    {text:"Nunc sollicitudin purus consectetur ante sodales, sed mollis nisl egestas. ",anger:0,fear:0.345,joy:0,sadness:0},
+    {text:"Phasellus rhoncus turpis ac ante feugiat interdum. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"Proin in lectus eu diam eleifend varius. ",anger:0,fear:0.7,joy:0,sadness:0.34},
+    {text:"Phasellus laoreet nulla eu nulla vehicula, vel aliquet arcu fringilla. ",anger:0,fear:0,joy:0,sadness:0},
+    {text:"In vel lectus sit amet metus pretium lobortis et nec ligula. ",anger:0,fear:0,joy:0.34,sadness:0.67},
+    {text:"Quisque consectetur lacus rutrum, sagittis urna sit amet, pretium nibh. ",anger:0,fear:0.23,joy:0,sadness:0},
     {text:"Etiam vestibulum dolor at nulla ullamcorper ornare quis ut enim.",anger:0,fear:0,joy:0,sadness:0.56}
   ];
 
@@ -291,7 +310,7 @@
                 .attr("fill-opacity", 0)
             .remove();
 
-    setTimeout(repeatWords, 61*48+152+550);
+    setTimeout(repeatWords, 6000+120*48+152+550);
   })();
 
 })();
