@@ -29,10 +29,18 @@
       return gradient;
   }
 
+
+  var gradientRed = initializeGradient("Red", "#54ff9f");
+  var gradientBlue = initializeGradient("Blue", "#54ff9f");
+  var gradientGreen = initializeGradient("Green", "#54ff9f");
+  var gradientPurple = initializeGradient("Purple", "#54ff9f");
+
+  /*
   var gradientRed = initializeGradient("Red", "#A00");
   var gradientBlue = initializeGradient("Blue", "#00A");
   var gradientGreen = initializeGradient("Green", "#0A0");
   var gradientPurple = initializeGradient("Purple", "#70A");
+  */
 
   // Create the center circle
   var circle = svg.append("circle")
@@ -45,7 +53,7 @@
   // Wave simulation
   var N = 30;
   var r = 15;
-  var A = 3;
+  var A = 1;
   var dt = 0.01;
   var maxSlope = 0.1;
 
@@ -89,6 +97,12 @@
         .curve(d3.curveBasis))(d);
   }
 
+  function countWaveEnergy(wave) {
+    return wave.reduce(function (acc, curr) {
+      return acc + Math.abs(curr.y);
+    }, 0);
+  }
+
   function initializeWave(name) {
     var data = initializeWaveArray(N,r,A);
     svg.append("path")
@@ -103,15 +117,22 @@
   function applyForce(wave, f) {
     var target = Math.floor(N * Math.random());
     //var target = Math.round(N/2);
+    var direction = ((Math.random < 0.5) ? -1 : 1);
     return wave.map(function (d, i) {
       if (i === target) {
         return {
           x: d.x,
-          y: d.y - ((Math.random < 0.5) ? -1 : 1) * f,
+          y: d.y - direction * f,
           v: d.v
         };
+      } else if (i === target-1 || i === target+1) {
+        return {
+          x: d.x,
+          y: d.y - direction * 0.25 * f,
+          v: d.v
+        }
       }
-      return d;
+      return Object.assign({}, d);
     });
   }
 
@@ -129,7 +150,9 @@
         .duration(dt * 10000)
         .ease(d3.easeLinear)
         .attr("stroke-width", function (d, i) {
-          return 0.1 + 0.2 * Math.random();
+          var energy = countWaveEnergy(waves[i]);
+          return 0.1 + 0.2 * energy / 200;
+          //return 0.1 + 0.2 * Math.random();
         })
         .attr("d", function (d, i) {
           waves[i] = updateWaveArray(waves[i]);
