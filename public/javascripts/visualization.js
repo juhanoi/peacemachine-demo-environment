@@ -47,7 +47,7 @@
   var N = 30;
   var r = 15;
   var A = 1;
-  var dt = 0.01;
+  var dt = 0.015;
   var maxSlope = 0.1;
 
   function initializeWaveArray(N,r,A) {
