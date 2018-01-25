@@ -1,4 +1,5 @@
 import {initializeLinearGradient} from './modules/gradients';
+import { initializeWave, waveSimulation, applyForceToWave } from "./modules/waves";
 
 export default function liveanalyzer() {
 
@@ -6,20 +7,12 @@ export default function liveanalyzer() {
   const svg = d3.select("svg");
   const defs = svg.append("defs");
 
-  // Create the center circle
-  const circle = svg.append("circle")
-      .style("fill", "#222")
-      .attr("cx", 0)
-      .attr("cy", 0)
-      .attr("r", 15);
-
   // Add a line
-  const gradient = initializeLinearGradient(defs, "White", "#FFF");
-  const path = svg.append("path")
-    .attr("class", "wave")
-    .style("fill", "transparent")
-    .attr("stroke", "white")
-    .attr("stroke-width", "0.3")
-    .attr("d", "M -15 0 L 15 0 Z");
+  const gradient = initializeLinearGradient(defs, "White", "#000");
+  let waves = [ initializeWave(svg, gradient) ];
+
+  waveSimulation(svg, waves);
+
+  setInterval(() => waves[0] = applyForceToWave(waves[0], 5), 1500);
 
 }
