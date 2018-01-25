@@ -16,9 +16,10 @@ export default function liveanalyzer() {
   // Add a line
   const gradient = initializeLinearGradient(defs, "White", "#FFF");
   const path = svg.append("path")
+    .attr("class", "wave")
     .style("fill", "transparent")
-    .attr("stroke", "url(#gradientWhite)")
-    .attr("stroke-width", 0.3)
-    .attr("d", "M -15 0 L 15 0");
+    .attr("stroke", "white")
+    .attr("stroke-width", "0.3")
+    .attr("d", "M -15 0 L 15 0 Z");
 
 }

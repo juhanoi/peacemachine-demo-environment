@@ -1,7 +1,7 @@
-export function initializeLinearGradient(defs, name, color) {
-    const id = "gradient" + name;
-    var gradient = defs.append("linearGradient")
-        .attr("id", id)
+export function initializeLinearGradient(defs, id, color) {
+
+    const gradient = defs.append("linearGradient")
+        .attr("id", "gradient"+id)
         .attr("x1", "0%").attr("x2", "100%")
         .attr("y1", "0%").attr("y2", "0%");
       gradient.append("stop")
@@ -17,8 +17,5 @@ export function initializeLinearGradient(defs, name, color) {
         .attr("offset", "100%")
         .attr("stop-color", color).attr("stop-opacity", 0);
 
-    return {
-      element: gradient,
-      id: id
-    };
+    return gradient;
 }
