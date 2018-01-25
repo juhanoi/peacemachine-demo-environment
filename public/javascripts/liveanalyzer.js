@@ -1,12 +1,24 @@
-(function() {
+import {initializeLinearGradient} from './modules/gradients';
 
-  // TODO: Clean this hack away from here when you finalize the architecture
-  if (!$("#liveanalyzer").length) return;
+export default function liveanalyzer() {
 
   // Find the SVG to draw on
-  var svg = d3.select("svg");
-  var defs = svg.append("defs");
+  const svg = d3.select("svg");
+  const defs = svg.append("defs");
 
-  
+  // Create the center circle
+  const circle = svg.append("circle")
+      .style("fill", "#222")
+      .attr("cx", 0)
+      .attr("cy", 0)
+      .attr("r", 15);
 
-})();
+  // Add a line
+  const gradient = initializeLinearGradient(defs, "White", "#FFF");
+  const path = svg.append("path")
+    .style("fill", "transparent")
+    .attr("stroke", "url(#gradientWhite)")
+    .attr("stroke-width", 0.3)
+    .attr("d", "M -15 0 L 15 0");
+
+}
