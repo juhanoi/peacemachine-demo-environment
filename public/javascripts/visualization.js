@@ -23,10 +23,10 @@ export default function visualization() {
 
   // Wave simulation
   const waves = [
-    initializeWave(svg, gradientRed),
-    initializeWave(svg, gradientBlue),
-    initializeWave(svg, gradientGreen),
-    initializeWave(svg, gradientPurple)
+    initializeWave(svg, gradientRed).data,
+    initializeWave(svg, gradientBlue).data,
+    initializeWave(svg, gradientGreen).data,
+    initializeWave(svg, gradientPurple).data
   ];
   waveSimulation(svg, waves);
 

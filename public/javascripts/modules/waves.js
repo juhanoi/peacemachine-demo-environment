@@ -37,11 +37,11 @@ function updateWaveArray(data) {
   });
 }
 
-function waveLine(d) {
+function waveLine(data) {
   return (d3.line()
       .x(function (d) { return d.x; })
       .y(function (d) { return d.y; })
-      .curve(d3.curveBasis))(d);
+      .curve(d3.curveBasis))(data);
 }
 
 function countWaveEnergy(wave) {
@@ -52,13 +52,13 @@ function countWaveEnergy(wave) {
 
 export function initializeWave(parent, gradient) {
   const data = initializeWaveArray(N,r,A);
-  parent.append("path")
+  const element = parent.append("path")
       .attr("class", "wave")
       .style("fill", "transparent")
       .attr("stroke", "url(#"+gradient.id+")")
       .attr("stroke-width", "0.3")
       .attr("d", waveLine(data));
-  return data;
+  return { element: element, data: data };
 }
 
 export function applyForceToWave(wave, f) {
