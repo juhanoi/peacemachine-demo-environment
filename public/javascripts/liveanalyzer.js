@@ -13,7 +13,7 @@ const waveAudioLine = dataArray => {
   )(dataArray);
 };
 const handleAudioData = wave => dataArray => {
-  wave.attr("stroke", "black").attr("stroke-width", "0.1").attr("d", waveAudioLine(dataArray));
+  wave.attr("stroke-width", "0.1").attr("d", waveAudioLine(dataArray));
 };
 
 export default function liveanalyzer() {
