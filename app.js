@@ -11,7 +11,7 @@ var index = require('./routes/index');
 var analyze = require('./routes/analyze');
 var visualization = require('./routes/visualization');
 var liveanalyzer = require('./routes/liveanalyzer');
-var liveanalyzer = require('./routes/discussion');
+var discussion = require('./routes/discussion');
 
 var app = express();
 var server = http.Server(app);
