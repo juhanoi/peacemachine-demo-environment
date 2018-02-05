@@ -4,7 +4,7 @@ import initializeAudio from './modules/audiorecorder';
 
 const HEIGHT = 15;
 const WIDTH = 30;
-const OFFSET = - WIDTH / 2;
+const OFFSET = -15;
 
 const waveAudioLine = dataArray => {
   return (d3.line()
@@ -14,6 +14,7 @@ const waveAudioLine = dataArray => {
 };
 const handleAudioData = wave => dataArray => {
   wave.attr("stroke-width", "0.1").attr("d", waveAudioLine(dataArray));
+
 };
 
 export default function liveanalyzer() {
@@ -23,7 +24,7 @@ export default function liveanalyzer() {
   const defs = svg.append("defs");
 
   // Add a line
-  const gradient = initializeLinearGradient(defs, "White", "#77afb6");
+  const gradient = initializeLinearGradient(defs, "White", "#000");
   let wave = initializeWave(svg, gradient).element;
 
   // Attach to audio
