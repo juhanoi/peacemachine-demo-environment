@@ -26,6 +26,13 @@ router.post('/', function(req, res, next) {
       res.json(response);
     }
   });
+
+  /*
+  analyzer.toneChat(params, function (error, response) {
+    if (error) console.log("Error: " + error);
+    else res.json(response);
+  });
+  */
 });
 
 module.exports = router;
