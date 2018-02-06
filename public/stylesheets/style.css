@@ -11,3 +11,41 @@ a {
   width: 500px;
   height: 250px;
 }
+
+
+#pm-discussion-view {
+  background-color: #92a0a6;
+  color: #fff;
+}
+  #pm-discussion-view h1 { text-align: center; }
+
+.pm-discussion {
+  margin-top: 50px;
+}
+
+  .pm-header {
+    border-bottom: 1px solid gray;
+    margin-bottom: 50px;
+  }
+
+  .pm-message {
+    margin-bottom: 1rem;
+  }
+    .pm-message p {
+      margin: 0;
+    }
+    .pm-message-name { font-weight: bold; }
+    .pm-message-body {}
+    .pm-message-sentiment {}
+      .pm-message-sentiment .badge {
+        margin-right: 10px;
+      }
+      .pm-message-sentiment .badge.anger { background-color: #E80521; }
+      .pm-message-sentiment .badge.fear { background-color: #325E2B; }
+      .pm-message-sentiment .badge.joy { background-color: #28a745; }
+      .pm-message-sentiment .badge.analytical { background-color: #ffc107; }
+      .pm-message-sentiment .badge.confident { background-color: #343a40; }
+      .pm-message-sentiment .badge.tentative { background-color: #17a2b8; }
+      .pm-message-sentiment .badge.sad { background-color: #6c757d; }
+      .pm-message-sentiment .badge.frustrated { background-color: #007bff; }
+      .pm-message-sentiment .badge.excited { background-color: #00ee00; }

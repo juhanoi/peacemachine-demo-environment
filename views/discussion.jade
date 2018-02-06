@@ -1,4 +1,34 @@
 extends layout
 
 block content
-  svg(id="liveanalyzer",height="100%",width="100%",viewBox="-50 -25 100 50")
+  div(id="pm-discussion-view" class="container-fluid")
+
+    div(class="row")
+      div(class="col")
+        h1 Machine vs Human comparison
+    div(class="row justify-content-around pm-discussion")
+      div(class="col-4")
+        div(class="pm-header")
+          h3 Analysis: IBM Watson
+
+        -each utterance in discussions.watson.utterances_tone
+          div(class="pm-message")
+            p(class="pm-message-name") #
+            p(class="pm-message-body") #{utterance.utterance_text}
+            p(class="pm-message-sentiment")
+              -each tone in utterance.tones
+                span(class="badge badge-secondary #{tone.tone_id}") #{tone.tone_name}
+
+      div(class="col-4")
+        div(class="pm-header")
+          h3 Analysis: Human
+
+        -each utterance in discussions.human.utterances
+          div(class="pm-message")
+            p(class="pm-message-name") #{utterance.user}
+            p(class="pm-message-body") #{utterance.text}
+            p(class="pm-message-sentiment")
+              -each tone in utterance.tones
+                span(class="badge badge-secondary #{tone.tone_id}") #{tone.tone_name}
+
+  link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",crossorigin="anonymous")
