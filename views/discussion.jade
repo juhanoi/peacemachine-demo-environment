@@ -9,23 +9,21 @@ block content
     div(class="row justify-content-around pm-discussion")
       div(class="col-4")
         div(class="pm-header")
-          h3 Analysis: IBM Watson
+          h4 IBM Watson
 
-        -each utterance in discussions.watson.utterances_tone
+        -each utterance in discussions.watson.utterances
           div(class="pm-message")
-            p(class="pm-message-name") #
-            p(class="pm-message-body") #{utterance.utterance_text}
+            p(class="pm-message-body") #{utterance.text}
             p(class="pm-message-sentiment")
               -each tone in utterance.tones
                 span(class="badge badge-secondary #{tone.tone_id}") #{tone.tone_name}
 
       div(class="col-4")
         div(class="pm-header")
-          h3 Analysis: Human
+          h4 Human
 
         -each utterance in discussions.human.utterances
           div(class="pm-message")
-            p(class="pm-message-name") #{utterance.user}
             p(class="pm-message-body") #{utterance.text}
             p(class="pm-message-sentiment")
               -each tone in utterance.tones
