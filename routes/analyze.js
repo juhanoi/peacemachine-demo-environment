@@ -10,29 +10,33 @@ var analyzer = new ToneAnalyzerV3({
   version_date: config.toneanalyzer.version_date
 });
 
-/* GET users listing. */
-router.post('/', function(req, res, next) {
-
-  var text = req.body.text;
+function analyzeText(text) {
   var params = {
     'tone_input': { text: text },
     'content_type': 'application/json'
   };
 
-  analyzer.tone(params, function(error, response) {
-    if (error) {
-      console.log('Error from Watson: ', error);
-    } else {
-      res.json(response);
-    }
+  return new Promise((resolve, reject) => {
+    analyzer.tone(params, function(error, response) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else {
+        resolve(response);
+      }
+    })
   });
+};
 
-  /*
-  analyzer.toneChat(params, function (error, response) {
-    if (error) console.log("Error: " + error);
-    else res.json(response);
-  });
-  */
+/* GET users listing. */
+router.post('/', function(req, res, next) {
+
+  var text = req.body.text;
+  var chat = JSON.parse(JSON.parse(text));
+
+  analyzeText(chat.utterances[0].text)
+    .then(result => res.json(result))
+    .catch(error => res.status(500).send('Failed to get response from Watson'));
 });
 
 module.exports = router;
